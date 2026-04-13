@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// main 함수가 있는 곳이 엔트리 포인트 : 앱이 시작할때 보이는 화면
 void main() {
   runApp(const MyApp());
 }
