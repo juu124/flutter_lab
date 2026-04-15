@@ -19,9 +19,13 @@ class ParentState extends State<ParentWidget> {
       true; // 하위 위젯이 어느 위치에 있는지를 판단하기 위해서.. ColumnA 에 있는지 ColumnB에 있는지, 구조 변경에 의한 하위 위젯의 라이프사이클
   String label = "Label A"; // 출력되는 데이터. 데이터 변경에 의한 하위 위젯의 라이프사이클
 
+  // 키 준비.. 이 키로 위젯 식별해서.. 상태가 구조 변경시에 유지되게
+  // 그럴려면 Globalkey를 사용한다.
+  GlobalKey childKey = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
-    final child = ChildWidget(label: label);
+    final child = ChildWidget(key: childKey, label: label,);
 
     return MaterialApp(
       home: Scaffold(
@@ -109,7 +113,7 @@ class ParentState extends State<ParentWidget> {
 class ChildWidget extends StatefulWidget {
   final String label;
 
-  ChildWidget({required this.label}) {
+  ChildWidget({super.key, required this.label}) {
     print('ChildWidget constructor... $label');
   }
 
@@ -211,6 +215,12 @@ class ChildState extends State<ChildWidget> with WidgetsBindingObserver {
 // I/flutter (19570): ChildState didChangeDependencies...
 // I/flutter (19570): ChildState build...
 // I/flutter (19570): ChildState dispose... -> 예전의 것이 dispose되고 다시생성된 것
+
+// 위젯의 위치 변경(구조 변경)시 상태가 새로 생성되지 않고 유지되게 하고 싶은 경우..
+// key를 이용한다.
+// I/flutter ( 2011): ChildWidget constructor... Label A
+// I/flutter ( 2011): ChildState didUpdateWidget... old = Label A, new = Label A
+// I/flutter ( 2011): ChildState build...
 
 // 앱의 라이프사이클..
 // 나갔을 때
