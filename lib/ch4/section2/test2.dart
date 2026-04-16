@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_lab/ch3/section2/test1.dart';
 
 void main() => runApp(MyApp());
 
