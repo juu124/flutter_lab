@@ -75,6 +75,21 @@ class MyApp extends StatelessWidget {
                 },
               ),
             ),
+
+            SizedBox(height: 20),
+            Expanded(
+              child: GridView.builder(
+              itemCount: users.length,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+              ),
+              itemBuilder: (context, index) {
+                return Card(
+                  child: Text(users[index].name),
+                );
+              },
+            ),
+            ),
           ],
         ),
       ),
