@@ -49,6 +49,7 @@ dependencies:
   json_annotation: ^4.11.0
   http: ^1.6.0
   dio: ^5.9.2
+  provider: ^6.1.5+1  # +1은 패치 버전이다
 
 # 실제 빌드시에는 필요없다.
 dev_dependencies:
